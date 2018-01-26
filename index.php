@@ -12,7 +12,7 @@
 */
 
 
-
+add_action( 'woocommerce_payment_complete', 'mysite_woocommerce_payment_complete', 10, 1 );
 
 
 
