@@ -11,6 +11,13 @@
  * License URI: https://opensource.org/licenses/MIT
 */
 
+add_action( 'plugins_loaded', 'add_voucher', 10, 1 );
+add_action('plugins_loaded', 'test');
+
+function test(){
+	write_to_file('test-loaded');
+}
+
 function write_to_file($text){
 	$myfile = fopen("debugfile.txt", "w") or die("Unable to open file!");
 	fwrite($myfile, $text);
@@ -88,7 +95,7 @@ dbDelta( $sql );
 
 
 add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1 );
-write_to_file("endoffile");
+
 
 
 
