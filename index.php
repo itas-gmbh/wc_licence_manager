@@ -11,7 +11,7 @@
  * License URI: https://opensource.org/licenses/MIT
 */
 
-add_action( 'plugins_loaded', 'add_voucher', 10, 1 );
+//add_action( 'plugins_loaded', 'add_voucher', 10, 1 );
 add_action('plugins_loaded', 'test');
 
 function test(){
