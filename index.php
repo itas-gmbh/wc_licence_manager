@@ -12,22 +12,16 @@
 */
 
 //add_action( 'plugins_loaded', 'add_voucher', 10, 1 );
-add_action('plugins_loaded', 'test');
+//add_action('plugins_loaded', 'test');
+add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1 );
 
 function test(){
-	write_to_file('test-loaded');
-	echo "<script language='javascript'>alert('test successful');</script>";
+	//echo "<script language='javascript'>alert('test successful');</script>";
 }
 
-function write_to_file($text){
-	$myfile = fopen("debugfile.txt", "w") or die("Unable to open file!");
-	fwrite($myfile, $text);
-	fclose($myfile);
-}
 
 function add_voucher($order_id){
-	write_to_file("plugin-started");
-	
+	echo "<script language='javascript'>alert('payment received');</script>";
 	/* create table */
 	global $wpdb;
 
@@ -95,7 +89,7 @@ dbDelta( $sql );
 
 
 
-add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1 );
+
 
 
 
