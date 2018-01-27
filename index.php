@@ -11,8 +11,19 @@
  * License URI: https://opensource.org/licenses/MIT
 */
 
+function add_voucher($order_id){
+	$order = wc_get_order( $order_id );
+$items = $order->get_items();
+	foreach ( $items as $item ) {
+    $product_name = $item->get_name();
+    $product_id = $item->get_product_id();
+    $product_variation_id = $item->get_variation_id();
+}
+}
 
-add_action( 'woocommerce_payment_complete', 'mysite_woocommerce_payment_complete', 10, 1 );
+
+
+add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1 );
 
 
 
