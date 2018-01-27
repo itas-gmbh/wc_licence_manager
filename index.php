@@ -68,7 +68,7 @@ dbDelta( $sql );
 			$table_name, 
 			array( 
 				'used_by' => $customer,	// string
-				'order_id' => $order_id;	// integer (number) 
+				'order_id' => $order_id	// integer (number) 
 			), 
 			array( 'ID' => $mylink->id ), 
 			array( 
