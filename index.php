@@ -11,14 +11,78 @@
  * License URI: https://opensource.org/licenses/MIT
 */
 
+function write_to_file($text){
+	$myfile = fopen("debugfile.txt", "w") or die("Unable to open file!");
+	fwrite($myfile, $text);
+	fclose($myfile);
+}
+
 function add_voucher($order_id){
+	write_to_file("plugin-started");
+	
+	/* create table */
+	global $wpdb;
+
+	$table_name = $wpdb->prefix . "licenses";
+
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE IF NOT EXISTS $table_name (
+	id int NOT NULL AUTO_INCREMENT,
+	art_id int,
+	art_desc varchar(200),
+	serial varchar(500),
+	used_by int,
+	order_id int,
+	comment varchar(5000),
+	created datetime,
+	PRIMARY KEY  (id)
+	) $charset_collate;";
+
+require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+dbDelta( $sql );	
+	
+	
+	/* get product id */
 	$order = wc_get_order( $order_id );
-$items = $order->get_items();
+	write_to_file($order_id);
+	//$order = new WC_Order($order_id);
+	$items = $order->get_items();
+	$customer = new WC_Customer( $order_id );
+	write_to_file($customer);
 	foreach ( $items as $item ) {
     $product_name = $item->get_name();
     $product_id = $item->get_product_id();
     $product_variation_id = $item->get_variation_id();
-}
+	}
+	
+	/* query */
+	$mylink = $wpdb->get_row( "
+	SELECT * FROM $table_name WHERE art_id = $product_id AND used_by == "" ORDER BY created ASC LIMIT 1;
+	" );
+	
+	if ($mylink !== null) {
+	
+		/* write to db */
+		$wpdb->update( 
+			$table_name, 
+			array( 
+				'used_by' => $customer,	// string
+				'order_id' => $order_id;	// integer (number) 
+			), 
+			array( 'ID' => $mylink->id ), 
+			array( 
+				'%d',	// value1
+				'%d'	// value2
+			), 
+			array( '%d' ) 
+		);
+		
+		
+		/* send mail */
+	
+	
+	}
 }
 
 
