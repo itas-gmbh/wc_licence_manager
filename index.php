@@ -88,6 +88,7 @@ dbDelta( $sql );
 
 
 add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1 );
+write_to_file("endoffile");
 
 
 
