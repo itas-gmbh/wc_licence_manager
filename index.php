@@ -16,6 +16,7 @@ add_action('plugins_loaded', 'test');
 
 function test(){
 	write_to_file('test-loaded');
+	echo "<script language='javascript'>alert('test successful');</script>";
 }
 
 function write_to_file($text){
