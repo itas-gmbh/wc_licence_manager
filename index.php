@@ -49,11 +49,11 @@ dbDelta( $sql );
 	
 	/* get product id */
 	$order = wc_get_order( $order_id );
-	echo "<script language='javascript'>alert('$order_id');</script>";
+	//echo "<script language='javascript'>alert('$order_id');</script>";
 	//$order = new WC_Order($order_id);
 	$items = $order->get_items();
 	$customer = new WC_Customer( $order_id );
-	echo "<script language='javascript'>alert('$customer');</script>";
+	//echo "<script language='javascript'>alert('$customer');</script>";
 	foreach ( $items as $item ) {
     $product_name = $item->get_name();
     $product_id = $item->get_product_id();
