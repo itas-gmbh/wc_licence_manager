@@ -23,7 +23,8 @@ function test(){
 
 
 function add_voucher($order_id){
-	echo "<script language='javascript'>alert('payment received');</script>";
+	//echo "<script language='javascript'>alert('payment received');</script>";
+	error_log("Plugin started", 3, "plugin-fehler.log");
 	/* create table */
 	global $wpdb;
 
