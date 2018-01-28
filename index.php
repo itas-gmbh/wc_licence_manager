@@ -13,7 +13,7 @@
 
 //add_action( 'plugins_loaded', 'add_voucher', 10, 1 );
 //add_action('plugins_loaded', 'test');
-add_action( 'woocommerce_order_status_changed', 'test', 10, 1 );
+add_action( 'woocommerce_order_status_changed', 'test');
 //add_action('woocommerce_order_status_changed', 'add_voucher');
 
 
