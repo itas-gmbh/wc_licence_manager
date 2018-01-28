@@ -14,7 +14,9 @@
 //add_action( 'plugins_loaded', 'add_voucher', 10, 1 );
 //add_action('plugins_loaded', 'test');
 //add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1 );
-add_action('woocommerce_order_status_changed', 'add_voucher');
+add_action('woocommerce_order_status_changed', 'add_voucher', 10, 1);
+
+
 function test(){
 	//echo "<script language='javascript'>alert('test successful');</script>";
 }
