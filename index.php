@@ -94,7 +94,8 @@ dbDelta( $sql );
 
 
 
-add_action( 'woocommerce_order_status_changed', 'add_voucher', 10, 1);
+//add_action( 'woocommerce_order_status_changed', 'add_voucher', 10, 1);
+add_action( 'woocommerce_payment_complete', 'add_voucher', 10, 1);
 
 
 
