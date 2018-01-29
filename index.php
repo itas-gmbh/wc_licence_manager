@@ -63,7 +63,7 @@ dbDelta( $sql );
 	
 	/* query */
 	$mylink = $wpdb->get_row( "
-	SELECT * FROM $table_name WHERE art_id = $product_id AND used_by == '' ORDER BY created ASC LIMIT 1
+	SELECT * FROM $table_name WHERE art_id = $product_id AND used_by = '' ORDER BY created ASC LIMIT 1
 	" );
 	
 	if ($mylink !== null) {
