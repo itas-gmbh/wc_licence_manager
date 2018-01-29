@@ -24,7 +24,7 @@ function test(){
 
 function add_voucher($order_id){
 	//echo "<script language='javascript'>alert('payment received');</script>";
-	error_log("Plugin started");
+	error_log("***Plugin started***");
 	/* create table */
 	global $wpdb;
 
@@ -54,7 +54,7 @@ dbDelta( $sql );
 	//echo "<script language='javascript'>alert('$order_id');</script>";
 	//$order = new WC_Order($order_id);
 	$items = $order->get_items();
-	$customer = new WC_Customer( $order_id );
+	$customer = $order->get_user_id();
 	error_log($customer);
 	//echo "<script language='javascript'>alert('$customer');</script>";
 	foreach ( $items as $item ) {
