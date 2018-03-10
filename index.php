@@ -46,29 +46,7 @@ function dispatch_licenses(){ //call every 15 minutes
 
 
 function add_voucher($order_id){
-	//echo "<script language='javascript'>alert('payment received');</script>";
-	error_log("***Plugin started***");
-	/* create table */
-	global $wpdb;
-
-	$table_name = $wpdb->prefix . "licenses";
-
-	$charset_collate = $wpdb->get_charset_collate();
-
-	$sql = "CREATE TABLE IF NOT EXISTS $table_name (
-	id int NOT NULL AUTO_INCREMENT,
-	art_id int,
-	art_desc varchar(200),
-	serial varchar(500),
-	used_by int,
-	order_id int,
-	comment varchar(5000),
-	created datetime,
-	PRIMARY KEY  (id)
-	) $charset_collate;";
-
-require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-dbDelta( $sql );	
+	
 	
 	
 	/* get product id */
