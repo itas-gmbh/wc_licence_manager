@@ -21,6 +21,29 @@ function test(){
 	echo "<script language='javascript'>alert('test successful');</script>";
 }
 
+function init(){
+//create Database	
+	
+	
+	
+}
+
+function dispatch_licenses(){ //call every 15 minutes
+	
+//1get all unfinished orders which are paid
+//2fetch all available licences
+
+//if 1 > 0 
+	//loop for (unfinished orders)
+ 		//compare ordered product id with available licences
+		//if available
+			//fetch email of buyer + send email + add buyer to database
+		//else 
+			//mail not available to admin
+	//loop end
+	
+}
+
 
 function add_voucher($order_id){
 	//echo "<script language='javascript'>alert('payment received');</script>";
@@ -94,8 +117,7 @@ dbDelta( $sql );
 
 
 
-//add_action( 'woocommerce_order_status_changed', 'add_voucher', 10, 1);
-add_action( 'woocommerce_order_status_completed', 'add_voucher', 10, 1);
+
 
 
 
